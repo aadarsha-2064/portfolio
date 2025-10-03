@@ -11,6 +11,8 @@
     --transition: all 0.3s ease;
 }
 
+
+
 * {
     margin: 0;
     padding: 0;
@@ -216,26 +218,153 @@ img {
 }
 
 /* ==================== EXPERIENCE SECTION ==================== */
+/* ==================== EXPERIENCE (Futuristic Edition) ==================== */
 .experience {
-    background: var(--color-bg-light);
+  position: relative;
+  background: linear-gradient(135deg, #050914, #0b0f24);
+  padding: 6rem 2rem;
+  overflow: hidden;
+  color: #e8f7ff;
 }
+
+/* Soft parallax glow background */
+.experience::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px 400px at 15% 20%, rgba(90,240,255,0.06), transparent 50%),
+              radial-gradient(600px 300px at 85% 80%, rgba(255,209,102,0.05), transparent 50%);
+  filter: blur(20px);
+  z-index: 0;
+}
+
 .experience-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
+
+/* Individual experience item (glowing card) */
+.experience-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.25rem;
+  padding: 2rem 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 transparent;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.experience-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(90,240,255,0.06), rgba(255,209,102,0.04));
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(90,240,255,0.1);
+  border-color: rgba(90,240,255,0.2);
+  opacity: 1;
+
+  transition: opacity 0.4s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(90,240,255,0.1);
+  border-color: rgba(90,240,255,0.2);
+}
+
+.experience-item:hover::after {
+  opacity: 1;
+}
+
+/* Small tag above the year */
 .timeline-tag {
-    font-size: 0.8rem;
-    color: var(--color-text-light);
-    margin-bottom: 1rem;
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
 }
+
+/* Year number */
 .experience-item h3 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #5af0ff;
+  margin: 0 0 0.5rem;
+  transition: color 0.3s;
 }
+
+.experience-item:hover h3 {
+  color: #ffd166;
+}
+
+/* Title */
 .experience-item .title {
-    font-weight: 500;
-    margin: 0.5rem 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #ffffff;
 }
+
+/* Description text */
+.experience-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Subtle hover glow ring */
+.experience-item::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.3rem;
+  border: 2px solid transparent;
+  background: linear-gradient(120deg, rgba(90,240,255,0.6), rgba(255,209,102,0.5)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.experience-item:hover::before {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .experience {
+    padding: 4rem 1rem;
+  }
+  .experience-item {
+    padding: 1.75rem 1.25rem;
+  }
+  .experience-item h3 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-container {
+    grid-template-columns: 1fr;
+  }
+  .experience-item h3 {
+    font-size: 2rem;
+  }
+}
+
 
 /* ==================== CORE COMPETENCIES (PROJECTS) ==================== */
 .services {
