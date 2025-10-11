@@ -29,18 +29,6 @@
             background-color: #EA580C;
             color: white;
         }
-        .float-anim {
-            animation: float 6s ease-in-out infinite;
-        }
-        .float-anim-delay-1 { animation-delay: 1.5s; }
-        .float-anim-delay-2 { animation-delay: 3s; }
-        .float-anim-delay-3 { animation-delay: 4.5s; }
-
-        @keyframes float {
-            0% { transform: translatey(0px); }
-            50% { transform: translatey(-20px); }
-            100% { transform: translatey(0px); }
-        }
 
         /* --- TYPEWRITER EFFECT STYLES --- */
         .typewriter-text {
@@ -165,21 +153,9 @@
                 </div>
 
                 <!-- Right Content -->
-                <div class="relative h-[60vh] lg:h-full">
+                <div class="relative h-[60vh] lg:h-full flex items-center justify-center">
                     <div class="absolute inset-0 flex items-center justify-center z-10">
                          <img src="images/profile.png" alt="Aadarsha Ghimire - Full-Stack Mobile Developer" class="w-full h-full max-w-lg object-contain">
-                    </div>
-                    <div class="absolute top-[15%] left-[5%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim">
-                        <img src="images/flutter.png" alt="Flutter Icon" class="w-full h-full object-contain">
-                    </div>
-                     <div class="absolute top-[20%] right-[5%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-1">
-                        <img src="images/python.png" alt="Python Icon" class="w-full h-full object-contain">
-                    </div>
-                    <div class="absolute bottom-[25%] left-[8%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-2">
-                         <img src="images/django.png" alt="Django Icon" class="w-full h-full object-contain">
-                    </div>
-                    <div class="absolute bottom-[20%] right-[10%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-3">
-                         <img src="images/android_studio.png" alt="Android Studio Icon" class="w-full h-full object-contain">
                     </div>
                 </div>
             </div>
