@@ -32,25 +32,28 @@
         .float-anim {
             animation: float 6s ease-in-out infinite;
         }
-        .float-anim-delay-1 { animation-delay: 2s; }
-        .float-anim-delay-2 { animation-delay: 4s; }
+        .float-anim-delay-1 { animation-delay: 1.5s; }
+        .float-anim-delay-2 { animation-delay: 3s; }
+        .float-anim-delay-3 { animation-delay: 4.5s; }
 
         @keyframes float {
-            0% { transform: translatey(0px) rotate(-12deg); }
-            50% { transform: translatey(-20px) rotate(8deg); }
-            100% { transform: translatey(0px) rotate(-12deg); }
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-20px); }
+            100% { transform: translatey(0px); }
         }
 
         /* --- TYPEWRITER EFFECT STYLES --- */
-        .typewriter-cursor {
+        .typewriter-text {
             display: inline-block;
-            width: 3px;
-            background-color: #EA580C;
+            vertical-align: bottom;
+        }
+        .blinking-cursor {
+            border-right: 3px solid #EA580C;
             animation: blink-caret 0.75s step-end infinite;
         }
         @keyframes blink-caret {
-            from, to { background-color: transparent }
-            50% { background-color: #EA580C; }
+            from, to { border-color: transparent }
+            50% { border-color: #EA580C; }
         }
         
         /* --- EXPERTISE CARD EFFECTS --- */
@@ -144,7 +147,9 @@
             <div class="grid lg:grid-cols-2 gap-8 items-center min-h-screen">
                 <!-- Left Content -->
                 <div class="z-10 text-center lg:text-left">
-                    <h2 id="typewriter-h2" class="text-3xl md:text-4xl font-medium h-12"></h2>
+                    <h2 id="typewriter-container" class="text-3xl md:text-4xl font-medium h-12">
+                        <span id="typewriter-text" class="typewriter-text"></span><span class="blinking-cursor"></span>
+                    </h2>
                     <h1 class="text-5xl md:text-7xl font-bold my-3">Full-Stack Mobile App Developer</h1>
                     <p class="text-gray-400 max-w-md mx-auto lg:mx-0">
                         From Nepal, I craft seamless and impactful mobile applications from concept to deployment.
@@ -159,31 +164,39 @@
                     </div>
                 </div>
 
-                <!-- Right Content -->
+                <!-- Right Content with Your Floating Images -->
                 <div class="relative h-[60vh] lg:h-full">
                     <div class="absolute inset-0 flex items-center justify-center z-10">
                          <img src="profile.png" alt="Aadarsha Ghimire - Full-Stack Mobile Developer" class="w-full h-full max-w-lg object-contain">
                     </div>
-                    <div class="absolute top-[20%] left-[10%] w-16 h-16 bg-blue-500/80 flex items-center justify-center rounded-2xl shadow-2xl float-anim">
-                        <i class="fa-brands fa-flutter text-4xl text-white"></i>
+                    
+                    <!-- Flutter Image -->
+                    <div class="absolute top-[15%] left-[5%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim">
+                        <img src="flutter.png" alt="Flutter Icon" class="w-full h-full object-contain">
                     </div>
-                     <div class="absolute top-[30%] right-[5%] w-16 h-16 bg-yellow-400/80 flex items-center justify-center rounded-2xl shadow-2xl float-anim float-anim-delay-1">
-                        <i class="fab fa-python text-4xl text-black"></i>
+                    <!-- Python Image -->
+                     <div class="absolute top-[20%] right-[5%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-1">
+                        <img src="python.png" alt="Python Icon" class="w-full h-full object-contain">
                     </div>
-                    <div class="absolute bottom-[25%] left-[20%] w-16 h-16 bg-green-800/80 flex items-center justify-center rounded-2xl shadow-2xl float-anim float-anim-delay-2">
-                         <i class="fas fa-leaf text-4xl text-white"></i>
+                    <!-- Django Image -->
+                    <div class="absolute bottom-[25%] left-[8%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-2">
+                         <img src="django.png" alt="Django Icon" class="w-full h-full object-contain">
+                    </div>
+                    <!-- Android Studio Image -->
+                    <div class="absolute bottom-[20%] right-[10%] w-20 h-20 p-2 bg-white/5 backdrop-blur-sm rounded-2xl shadow-2xl float-anim float-anim-delay-3">
+                         <img src="android_studio.png" alt="Android Studio Icon" class="w-full h-full object-contain">
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- About Me Section - NEW -->
+    <!-- About Me Section -->
     <section id="about" class="container mx-auto px-6 py-20 md:py-28">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl md:text-6xl font-bold">About <span class="text-orange-500">Me</span></h2>
             <p class="mt-8 text-gray-300 leading-relaxed">
-                I’m a passionate and self-motivated Full-Stack Mobile App Developer who enjoys creating useful and easy-to-use digital products. Since 2020, I’ve independently designed, built, and launched complete mobile applications. This hands-on experience shows my strong skills in every part of the development process from UI/UX design to backend setup and integration.
+                I’m a passionate and self-motivated Full-Stack Mobile App Developer who enjoys creating useful and easy-to-use digital products. Since 2020, I’ve independently designed, built, and launched complete mobile applications. This hands-on experience shows my strong skills in every part of the development process — from UI/UX design to backend setup and integration.
             </p>
             <a href="#contact" class="inline-block mt-10 bg-orange-600 text-white font-semibold py-3 px-10 rounded-full hover:bg-orange-700 transition-colors text-lg">
                 Let's Talk
@@ -347,9 +360,7 @@
         }
         mobileMenuButton.addEventListener('click', toggleMenu);
         allNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) { toggleMenu(); }
-            });
+            link.addEventListener('click', () => { if (!mobileMenu.classList.contains('hidden')) { toggleMenu(); } });
         });
 
         // SCRIPT FOR EXPERTISE CARD HOVER EFFECT
@@ -363,34 +374,27 @@
             });
         });
 
-        // --- NEW SCRIPT FOR TYPEWRITER EFFECT ---
+        // SCRIPT FOR TYPEWRITER EFFECT
         document.addEventListener('DOMContentLoaded', () => {
-            const typewriterElement = document.getElementById('typewriter-h2');
-            const textPart1 = "Hey, I am ";
-            const textPart2 = "Aadarsha Ghimire";
+            const typewriterTextElement = document.getElementById('typewriter-text');
+            const cursorElement = document.querySelector('.blinking-cursor');
+            const fullText = "Hey, I am Aadarsha Ghimire";
+            const namePart = "Aadarsha Ghimire";
             let i = 0;
-            let j = 0;
-            let nameSpan; // To hold the span for the name
 
             function typeWriter() {
-                if (i < textPart1.length) {
-                    typewriterElement.innerHTML = textPart1.substring(0, i + 1) + '<span class="typewriter-cursor">&nbsp;</span>';
+                if (i < fullText.length) {
+                    let currentText = fullText.substring(0, i + 1);
+                    if(currentText.includes(namePart)) {
+                        let styledText = currentText.replace(namePart, `<span class="text-orange-500">${namePart}</span>`);
+                        typewriterTextElement.innerHTML = styledText;
+                    } else {
+                        typewriterTextElement.innerHTML = currentText;
+                    }
                     i++;
                     setTimeout(typeWriter, 90);
-                } else if (j < textPart2.length) {
-                    if (j === 0) {
-                        // Create the orange span for the name
-                        typewriterElement.innerHTML = textPart1;
-                        nameSpan = document.createElement('span');
-                        nameSpan.className = 'text-orange-500';
-                        typewriterElement.appendChild(nameSpan);
-                    }
-                    nameSpan.innerHTML = textPart2.substring(0, j + 1) + '<span class="typewriter-cursor">&nbsp;</span>';
-                    j++;
-                    setTimeout(typeWriter, 90);
                 } else {
-                    // Typing finished, remove the cursor
-                    typewriterElement.querySelector('.typewriter-cursor').remove();
+                    cursorElement.style.animation = 'blink-caret 0.75s step-end infinite';
                 }
             }
             typeWriter();
